@@ -1,10 +1,16 @@
-ABC.exe :main.o big3.o fact.o rev.o
-	gcc -o ABC.exe main.o big3.o fact.o rev.o
-main.o :main.c
-	gcc -c main.c
-big3.o :big3.c
-	gcc -c big3.c
-fact.o :fact.c
-	gcc -c fact.c
-rev.o :rev.c
-	gcc -c rev.c
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+
+all: big3.exe fact.exe pal.exe
+
+big3.exe: dev1/big3.c
+	$(CC) $(CFLAGS) dev1/big3.c -o big3.exe
+
+fact.exe: fact.c
+	$(CC) $(CFLAGS) fact.c -o fact.exe
+
+pal.exe: pal.c
+	$(CC) $(CFLAGS) pal.c -o pal.exe
+
+clean:
+	rm -f *.o *.exe
